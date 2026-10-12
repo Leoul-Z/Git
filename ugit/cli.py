@@ -1,4 +1,7 @@
 import argparse
+import os
+
+from . import data
 
 
 def main():
@@ -15,15 +18,9 @@ def parse_args():
     init_parser = commands.add_parser('init')
     init_parser.set_defaults(func=init)
 
-    bye_parser = commands.add_parser('bye')
-    bye_parser.set_defaults(func=bye)
-
     return parser.parse_args()
 
 
 def init(args):
-    print('Hello, World!')
-
-
-def bye(args):
-    print('Bye, World!')
+    data.init()
+    print(f'Initialized empty ugit repository in {os.getcwd()}/{data.GIT_DIR}')
